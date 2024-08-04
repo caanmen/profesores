@@ -14,3 +14,20 @@ class EstudianteModelo:
 
     def obtener_estudiantes(self):
         return self.estudiantes
+
+class Profesor:
+    def __init__(self, nombre, edad, materia):
+        self.nombre = nombre
+        self.edad = edad
+        self.materia = materia
+
+class ProfesorModelo:
+    def __init__(self):
+        self.profesores = []
+
+    def agregar_profesor(self, nombre, edad, materia):
+        profesor = Profesor(nombre, edad, materia)
+        self.profesores.append(profesor)
+
+    def obtener_profesores(self):
+        return self.profesores
