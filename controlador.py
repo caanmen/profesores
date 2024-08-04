@@ -45,7 +45,12 @@ class EstudianteControlador:
             self.vista_profesores.mostrar_mensaje("No hay profesores registrados.")
 
     def calcular_edad(self, fecha_nacimiento):
-        hoy = datetime.now().date()
-        fecha_nac = datetime.strptime(fecha_nacimiento, "%d/%m/%Y").date()
-        edad = hoy.year - fecha_nac.year - ((hoy.month, hoy.day) < (fecha_nac.month, fecha_nac.day))
-        return edad
+        while True:
+            try:
+                hoy = datetime.now().date()
+                fecha_nac = datetime.strptime(fecha_nacimiento, "%d/%m/%Y").date()
+                edad = hoy.year - fecha_nac.year - ((hoy.month, hoy.day) < (fecha_nac.month, fecha_nac.day))
+                return edad
+            except ValueError:
+                print("Formato de fecha incorrecto. Por favor, use el formato dd/mm/yyyy.")
+                fecha_nacimiento = input("Ingrese la fecha de nacimiento nuevamente (dd/mm/yyyy): ")
